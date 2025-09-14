@@ -32,7 +32,7 @@ export function VideoCard({ video }: VideoCardProps) {
         {/* Creator info */}
         <div className="absolute top-3 left-3 right-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-black/60 rounded-full flex items-center justify-center">
               <span className="text-white text-xs font-medium">{video.creator.charAt(0)}</span>
             </div>
             <span className="text-white text-sm font-medium">{video.creator}</span>

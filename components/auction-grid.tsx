@@ -11,7 +11,7 @@ const mockAuctions = [
     buyNowPrice: 2000,
     bidCount: 23,
     timeLeft: 3600000, // 1 hour in milliseconds
-    image: "/vintage-watch-auction.png",
+    image: "/placeholder-rcz9x.png",
     seller: "LuxuryCollector",
     category: "Jewelry",
     hasReserve: true,
@@ -27,7 +27,7 @@ const mockAuctions = [
     buyNowPrice: 800,
     bidCount: 18,
     timeLeft: 7200000, // 2 hours
-    image: "/limited-sneakers-auction.png",
+    image: "/placeholder-2dluo.png",
     seller: "SneakerHead",
     category: "Fashion",
     hasReserve: false,
@@ -42,7 +42,7 @@ const mockAuctions = [
     startingBid: 1000,
     bidCount: 31,
     timeLeft: 86400000, // 24 hours
-    image: "/abstract-art-auction.png",
+    image: "/placeholder-ogmgi.png",
     seller: "ArtistStudio",
     category: "Art",
     hasReserve: true,
@@ -58,7 +58,7 @@ const mockAuctions = [
     buyNowPrice: 1200,
     bidCount: 42,
     timeLeft: 1800000, // 30 minutes
-    image: "/gaming-console-auction.png",
+    image: "/placeholder-l4ud3.png",
     seller: "GameZone",
     category: "Electronics",
     hasReserve: false,
@@ -73,7 +73,7 @@ const mockAuctions = [
     startingBid: 150,
     bidCount: 12,
     timeLeft: 43200000, // 12 hours
-    image: "/antique-jewelry-box.png",
+    image: "/placeholder-dkgrx.png",
     seller: "AntiqueDealer",
     category: "Collectibles",
     hasReserve: true,
@@ -89,7 +89,7 @@ const mockAuctions = [
     buyNowPrice: 1500,
     bidCount: 27,
     timeLeft: 21600000, // 6 hours
-    image: "/camera-lens-auction.png",
+    image: "/placeholder-2gu39.png",
     seller: "PhotoPro",
     category: "Electronics",
     hasReserve: false,

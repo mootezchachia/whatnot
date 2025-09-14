@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -50,10 +50,26 @@ interface VideoPlayerProps {
 export function VideoPlayer({ video, onProductsToggle, onScroll, onCreateReview }: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(true)
   const [isLiked, setIsLiked] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   const handlePlayPause = () => {
-    setIsPlaying(!isPlaying)
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause()
+      } else {
+        videoRef.current.play()
+      }
+      setIsPlaying(!isPlaying)
+    }
   }
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        setIsPlaying(false)
+      })
+    }
+  }, [video.id])
 
   const handleLike = () => {
     setIsLiked(!isLiked)
@@ -63,7 +79,17 @@ export function VideoPlayer({ video, onProductsToggle, onScroll, onCreateReview 
     <div className="relative h-full w-full bg-black">
       {/* Video Background */}
       <div className="absolute inset-0">
-        <img src={video.videoUrl || "/placeholder.svg"} alt="Video content" className="h-full w-full object-cover" />
+        <video
+          ref={videoRef}
+          src={video.videoUrl}
+          className="h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+        />
 
         {/* Play/Pause Overlay */}
         <div className="absolute inset-0 flex items-center justify-center" onClick={handlePlayPause}>
@@ -105,11 +131,11 @@ export function VideoPlayer({ video, onProductsToggle, onScroll, onCreateReview 
             }}
             onClick={onProductsToggle}
           >
-            <div className="flex items-center gap-2 rounded-full bg-white/90 px-3 py-2 shadow-lg backdrop-blur-sm">
-              <ShoppingBag className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-foreground">${product.price}</span>
+            <div className="flex items-center gap-2 rounded-full bg-black/80 px-3 py-2 shadow-lg backdrop-blur-sm">
+              <ShoppingBag className="h-4 w-4 text-white" />
+              <span className="text-sm font-medium text-white">${product.price}</span>
               {product.commission && (
-                <Badge variant="secondary" className="text-xs px-1 py-0">
+                <Badge variant="secondary" className="text-xs px-1 py-0 bg-green-600 text-white border-green-700">
                   {product.commission}%
                 </Badge>
               )}
@@ -214,7 +240,7 @@ export function VideoPlayer({ video, onProductsToggle, onScroll, onCreateReview 
               Shop Now ({video.products.length} items)
             </Button>
             {video.commissionEarned && (
-              <Badge variant="secondary" className="bg-green-500 text-white">
+              <Badge variant="secondary" className="bg-green-700 text-white border-green-800">
                 <DollarSign className="h-3 w-3 mr-1" />
                 Earned ${video.commissionEarned}
               </Badge>

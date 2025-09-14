@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -32,7 +32,7 @@ const mockStream = {
   title: "Fashion Haul - New Winter Collection",
   host: {
     name: "StyleGuru",
-    avatar: "/fashion-influencer-avatar.png",
+    avatar: "/placeholder.svg?height=100&width=100",
     verified: true,
     followers: 12500,
   },
@@ -55,6 +55,7 @@ export function LiveStreamPlayer({ streamId }: LiveStreamPlayerProps) {
   const [viewerCount, setViewerCount] = useState(mockStream.viewers)
   const [showCoHostPanel, setShowCoHostPanel] = useState(false)
   const [showMulticastPanel, setShowMulticastPanel] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -63,11 +64,24 @@ export function LiveStreamPlayer({ streamId }: LiveStreamPlayerProps) {
     return () => clearInterval(interval)
   }, [])
 
+  const handleMuteToggle = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted
+      setIsMuted(!isMuted)
+    }
+  }
+
   return (
     <div className="relative h-full bg-black">
       {/* Video Background */}
       <div className="absolute inset-0">
-        <img src="/live-fashion-stream.png" alt="Live stream" className="w-full h-full object-cover" />
+        <div className="w-full h-full bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center">
+          <img
+            src="/placeholder.svg?height=600&width=800"
+            alt="Live Fashion Stream"
+            className="w-full h-full object-cover opacity-80"
+          />
+        </div>
 
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
@@ -134,7 +148,7 @@ export function LiveStreamPlayer({ streamId }: LiveStreamPlayerProps) {
               variant="ghost"
               size="icon"
               className="h-10 w-10 bg-black/50 text-white hover:bg-black/70"
-              onClick={() => setIsMuted(!isMuted)}
+              onClick={handleMuteToggle}
             >
               {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
             </Button>
@@ -175,7 +189,7 @@ export function LiveStreamPlayer({ streamId }: LiveStreamPlayerProps) {
           <Button
             size="sm"
             variant={isFollowing ? "outline" : "default"}
-            className={isFollowing ? "bg-white/20 text-white border-white/30" : ""}
+            className={isFollowing ? "bg-black/60 text-white border-white/50 hover:bg-black/70" : ""}
             onClick={() => setIsFollowing(!isFollowing)}
           >
             {isFollowing ? "Following" : "Follow"}

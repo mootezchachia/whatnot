@@ -11,7 +11,7 @@ export function FeaturedContent() {
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative p-6 space-y-4">
           <div className="flex items-center gap-2">
-            <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+            <Badge variant="secondary" className="bg-black/50 text-white border-white/30">
               Featured Event
             </Badge>
             <Badge variant="secondary" className="bg-red-500 text-white border-red-600">
@@ -43,7 +43,7 @@ export function FeaturedContent() {
               <Play className="h-4 w-4 mr-2" />
               Watch Live
             </Button>
-            <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 bg-transparent">
+            <Button variant="outline" className="border-white/30 text-white hover:bg-black/30 bg-black/50">
               Shop Now
             </Button>
           </div>

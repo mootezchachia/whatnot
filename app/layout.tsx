@@ -17,8 +17,8 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: "ShopStream - Social Commerce App",
-  description: "Discover, shop, and sell through shoppable videos, live streams, and auctions",
+  title: "TikTok Shop App - Social Commerce Platform",
+  description: "Next-generation social commerce with shoppable videos, live shopping streams, and interactive auctions",
   generator: "v0.app",
 }
 

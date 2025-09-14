@@ -29,28 +29,28 @@ interface ChatMessage {
 const mockMessages: ChatMessage[] = [
   {
     id: "1",
-    user: { name: "Sarah_M", avatar: "/user-avatar-sarah.png", verified: true },
+    user: { name: "Sarah_M", avatar: "/placeholder.svg?height=50&width=50", verified: true },
     message: "Love this jacket! Where can I buy it?",
     timestamp: new Date(Date.now() - 30000),
     type: "message",
   },
   {
     id: "2",
-    user: { name: "Mike_R", avatar: "/user-avatar-mike.png" },
+    user: { name: "Mike_R", avatar: "/placeholder.svg?height=50&width=50" },
     message: "Just followed! Great content 🔥",
     timestamp: new Date(Date.now() - 25000),
     type: "follow",
   },
   {
     id: "3",
-    user: { name: "Emma_L", avatar: "/user-avatar-emma.png", badge: "VIP" },
+    user: { name: "Emma_L", avatar: "/placeholder.svg?height=50&width=50", badge: "VIP" },
     message: "Sent a gift! 🎁",
     timestamp: new Date(Date.now() - 20000),
     type: "gift",
   },
   {
     id: "4",
-    user: { name: "David_C", avatar: "/user-avatar-david.png" },
+    user: { name: "David_C", avatar: "/placeholder.svg?height=50&width=50" },
     message: "Just purchased the boots! Thanks for the demo",
     timestamp: new Date(Date.now() - 15000),
     type: "purchase",
@@ -86,7 +86,7 @@ export function LiveChat({ streamId }: LiveChatProps) {
         id: Date.now().toString(),
         user: {
           name: `User_${Math.floor(Math.random() * 1000)}`,
-          avatar: "/placeholder.svg",
+          avatar: "/placeholder.svg?height=50&width=50",
         },
         message: randomMessages[Math.floor(Math.random() * randomMessages.length)],
         timestamp: new Date(),
@@ -107,7 +107,7 @@ export function LiveChat({ streamId }: LiveChatProps) {
       id: Date.now().toString(),
       user: {
         name: "You",
-        avatar: "/placeholder.svg",
+        avatar: "/placeholder.svg?height=50&width=50",
       },
       message: newMessage,
       timestamp: new Date(),
@@ -158,7 +158,7 @@ export function LiveChat({ streamId }: LiveChatProps) {
           <div key={message.id} className={`p-2 rounded-lg ${getMessageStyle(message.type)}`}>
             <div className="flex items-start gap-2">
               <Avatar className="h-6 w-6">
-                <AvatarImage src={message.user.avatar || "/placeholder.svg"} />
+                <AvatarImage src={message.user.avatar || "/placeholder.svg?height=50&width=50"} />
                 <AvatarFallback className="text-xs">{message.user.name[0]}</AvatarFallback>
               </Avatar>
 
